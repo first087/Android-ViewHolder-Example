@@ -37,8 +37,7 @@ public class ListViewActivity extends AppCompatActivity {
     private class ListViewAdapter extends BaseAdapter {
         private ArrayList<LoremItem> arrayItem;
 
-        private TextView item_text;
-        private CheckBox item_check;
+        private ViewHolder viewHolder;
 
         public ListViewAdapter(ArrayList<LoremItem> arrayItem) {
             this.arrayItem = arrayItem;
@@ -50,40 +49,53 @@ public class ListViewActivity extends AppCompatActivity {
         }
 
         @Override
-        public Object getItem(int i) {
+        public Object getItem(int position) {
             return null;
         }
 
         @Override
-        public long getItemId(int i) {
+        public long getItemId(int position) {
             return 0;
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            view = LayoutInflater.from(ListViewActivity.this).inflate(R.layout.view_item, null);
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(ListViewActivity.this).inflate(R.layout.view_item, null);
+                viewHolder = new ViewHolder(convertView);
+                convertView.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
 
-            initInstances(i, view);
-            initData(i);
+            initInstances(position);
+            initData(position);
 
-            return view;
+            return convertView;
         }
 
-        private void initInstances(final int i, View view) {
-            item_text  = (TextView) view.findViewById(R.id.item_text);
-            item_check = (CheckBox) view.findViewById(R.id.item_check);
-
-            item_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        private void initInstances(final int position) {
+            viewHolder.item_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    arrayItem.get(i).setLoremCheck(b);
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    arrayItem.get(position).setLoremCheck(isChecked);
                 }
             });
         }
 
-        private void initData(int i) {
-            item_text.setText(arrayItem.get(i).getLoremText());
-            item_check.setChecked(arrayItem.get(i).getLoremCheck());
+        private void initData(int position) {
+            viewHolder.item_text.setText(arrayItem.get(position).getLoremText());
+            viewHolder.item_check.setChecked(arrayItem.get(position).getLoremCheck());
+        }
+
+        private class ViewHolder {
+            public TextView item_text;
+            public CheckBox item_check;
+
+            public ViewHolder(View convertView) {
+                item_text  = (TextView) convertView.findViewById(R.id.item_text);
+                item_check = (CheckBox) convertView.findViewById(R.id.item_check);
+            }
         }
     }
 }
