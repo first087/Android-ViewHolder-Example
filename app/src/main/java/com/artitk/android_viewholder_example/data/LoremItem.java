@@ -4,10 +4,12 @@ public class LoremItem {
 
     private String loremText;
     private Boolean loremCheck;
+    private int colorIndex;
 
     public LoremItem() {
         loremText = "";
         loremCheck = false;
+        colorIndex = -1;
     }
 
     public String getLoremText() {
@@ -24,5 +26,13 @@ public class LoremItem {
 
     public void setLoremCheck(Boolean loremCheck) {
         this.loremCheck = loremCheck;
+    }
+
+    public int getColorIndex() {
+        return colorIndex;
+    }
+
+    public void setColorIndex(int colorIndex) {
+        this.colorIndex = colorIndex;
     }
 }
