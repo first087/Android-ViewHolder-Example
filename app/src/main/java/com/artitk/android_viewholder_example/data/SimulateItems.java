@@ -26,4 +26,20 @@ public class SimulateItems {
 
         return arrayList;
     }
+
+    public static CharSequence[] getSimulateColorNames(Context context) {
+        return new CharSequence[] {
+                context.getString(R.string.red), context.getString(R.string.green),
+                context.getString(R.string.blue), context.getString(R.string.orange)
+        };
+    }
+
+    public static int getSimulateColor(Context context, int index) {
+        int[] colorResId = {
+                android.R.color.holo_red_light, android.R.color.holo_green_light,
+                android.R.color.holo_blue_light, android.R.color.holo_orange_light
+        };
+
+        return context.getResources().getColor(colorResId[index]);
+    }
 }

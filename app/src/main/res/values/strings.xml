@@ -14,4 +14,9 @@
     <string name="lorem_long_5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed mauris vestibulum, venenatis lectus et, placerat felis. Sed molestie pulvinar lectus sit amet imperdiet. Sed id tortor tempor, interdum nisl sed, scelerisque mi. Praesent a tortor ac leo pellentesque gravida. Suspendisse vitae odio ac est ornare porttitor. Integer convallis nunc nec ante ullamcorper aliquet. Nunc orci diam, elementum vitae suscipit non, pellentesque sit amet orci. Sed porta diam mattis, auctor purus a, feugiat nisi. Nunc sapien magna, pulvinar sed lobortis sit amet, consequat in nibh. Pellentesque lobortis purus vel arcu porta, vel euismod libero tempus. Nam id neque tempor, malesuada sem in, consequat risus. Fusce vestibulum lorem nisl, non scelerisque purus facilisis nec. Praesent nibh risus, ullamcorper sed quam pulvinar, fermentum malesuada erat. Ut dignissim nulla at lacus ornare tincidunt. Quisque blandit nisl nec ante venenatis ullamcorper. Aenean feugiat vel mi sit amet mollis. Nunc volutpat.</string>
 
     <string name="select_this_item">Select this item.</string>
+
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="orange">Orange</string>
 </resources>
