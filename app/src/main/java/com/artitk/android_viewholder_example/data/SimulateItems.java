@@ -1,6 +1,8 @@
-package com.artitk.android_viewholder_example;
+package com.artitk.android_viewholder_example.data;
 
 import android.content.Context;
+
+import com.artitk.android_viewholder_example.R;
 
 import java.util.ArrayList;
 

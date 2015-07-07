@@ -1,4 +1,4 @@
-package com.artitk.android_viewholder_example;
+package com.artitk.android_viewholder_example.data;
 
 public class LoremItem {
 

@@ -11,6 +11,9 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.artitk.android_viewholder_example.data.LoremItem;
+import com.artitk.android_viewholder_example.data.SimulateItems;
+
 import java.util.ArrayList;
 
 public class ListViewActivity extends AppCompatActivity {
