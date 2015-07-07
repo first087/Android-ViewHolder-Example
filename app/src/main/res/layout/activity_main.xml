@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <Button
@@ -20,6 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/listview" />
+
+        <Button
+            android:id="@+id/button_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recyclerview" />
 
     </LinearLayout>
 </RelativeLayout>

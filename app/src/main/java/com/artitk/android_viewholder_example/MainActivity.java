@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ListViewActivity.class));
             }
         });
+
+        findViewById(R.id.button_recyclerview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: Intent to new Activity
+            }
+        });
     }
 
     @Override
