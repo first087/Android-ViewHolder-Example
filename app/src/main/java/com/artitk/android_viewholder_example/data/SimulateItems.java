@@ -22,6 +22,8 @@ public class SimulateItems {
             arrayList.add(loremItem);
         }
 
+        arrayList.get(1).setLoremCheck(true);
+
         return arrayList;
     }
 }
