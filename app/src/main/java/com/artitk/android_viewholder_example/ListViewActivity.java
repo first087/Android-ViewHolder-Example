@@ -1,5 +1,7 @@
 package com.artitk.android_viewholder_example;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,8 +39,6 @@ public class ListViewActivity extends AppCompatActivity {
     private class ListViewAdapter extends BaseAdapter {
         private ArrayList<LoremItem> arrayItem;
 
-        private ViewHolder viewHolder;
-
         public ListViewAdapter(ArrayList<LoremItem> arrayItem) {
             this.arrayItem = arrayItem;
         }
@@ -60,6 +60,8 @@ public class ListViewActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder viewHolder;
+
             if (convertView == null) {
                 convertView = LayoutInflater.from(ListViewActivity.this).inflate(R.layout.view_item, null);
                 viewHolder = new ViewHolder(convertView);
@@ -68,13 +70,34 @@ public class ListViewActivity extends AppCompatActivity {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-            initInstances(position);
-            initData(position);
+            initInstances(position, viewHolder);
+            initData(position, viewHolder);
 
             return convertView;
         }
 
-        private void initInstances(final int position) {
+        private void initInstances(final int position, final ViewHolder viewHolder) {
+            viewHolder.item_text.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    (new AlertDialog.Builder(ListViewActivity.this))
+                            .setTitle(R.string.choose_background_color)
+                            .setItems(SimulateItems.getSimulateColorNames(ListViewActivity.this),
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            arrayItem.get(position).setColorIndex(which);
+                                            viewHolder.item_text.setBackgroundColor(
+                                                    SimulateItems.getSimulateColor(ListViewActivity.this, which)
+                                            );
+                                        }
+                            })
+                            .show();
+
+                    return true;
+                }
+            });
+
             viewHolder.item_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -83,9 +106,13 @@ public class ListViewActivity extends AppCompatActivity {
             });
         }
 
-        private void initData(int position) {
+        private void initData(int position, ViewHolder viewHolder) {
             viewHolder.item_text.setText(arrayItem.get(position).getLoremText());
             viewHolder.item_check.setChecked(arrayItem.get(position).getLoremCheck());
+
+            viewHolder.item_text.setBackgroundColor(
+                    SimulateItems.getSimulateColor(ListViewActivity.this, arrayItem.get(position).getColorIndex())
+            );
         }
 
         private class ViewHolder {

@@ -1,6 +1,7 @@
 package com.artitk.android_viewholder_example.data;
 
 import android.content.Context;
+import android.graphics.Color;
 
 import com.artitk.android_viewholder_example.R;
 
@@ -40,6 +41,6 @@ public class SimulateItems {
                 android.R.color.holo_blue_light, android.R.color.holo_orange_light
         };
 
-        return context.getResources().getColor(colorResId[index]);
+        return index == -1 ? Color.TRANSPARENT : context.getResources().getColor(colorResId[index]);
     }
 }

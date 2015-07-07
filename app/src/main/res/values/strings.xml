@@ -15,6 +15,8 @@
 
     <string name="select_this_item">Select this item.</string>
 
+    <string name="choose_background_color">Choose background color</string>
+
     <string name="red">Red</string>
     <string name="green">Green</string>
     <string name="blue">Blue</string>
