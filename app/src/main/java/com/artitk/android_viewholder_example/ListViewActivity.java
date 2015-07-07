@@ -1,5 +1,6 @@
 package com.artitk.android_viewholder_example;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +21,14 @@ import java.util.ArrayList;
 
 public class ListViewActivity extends AppCompatActivity {
 
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
+
+        context = this;
 
         initInstances();
     }
@@ -63,32 +68,32 @@ public class ListViewActivity extends AppCompatActivity {
             ViewHolder viewHolder;
 
             if (convertView == null) {
-                convertView = LayoutInflater.from(ListViewActivity.this).inflate(R.layout.view_item, null);
+                convertView = LayoutInflater.from(context).inflate(R.layout.view_item, null);
                 viewHolder = new ViewHolder(convertView);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 
-            initInstances(position, viewHolder);
-            initData(position, viewHolder);
+            initInstances(viewHolder, position);
+            initData(viewHolder, position);
 
             return convertView;
         }
 
-        private void initInstances(final int position, final ViewHolder viewHolder) {
+        private void initInstances(final ViewHolder viewHolder, final int position) {
             viewHolder.item_text.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    (new AlertDialog.Builder(ListViewActivity.this))
+                    (new AlertDialog.Builder(context))
                             .setTitle(R.string.choose_background_color)
-                            .setItems(SimulateItems.getSimulateColorNames(ListViewActivity.this),
+                            .setItems(SimulateItems.getSimulateColorNames(context),
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             arrayItem.get(position).setColorIndex(which);
                                             viewHolder.item_text.setBackgroundColor(
-                                                    SimulateItems.getSimulateColor(ListViewActivity.this, which)
+                                                    SimulateItems.getSimulateColor(context, which)
                                             );
                                         }
                             })
@@ -106,12 +111,12 @@ public class ListViewActivity extends AppCompatActivity {
             });
         }
 
-        private void initData(int position, ViewHolder viewHolder) {
+        private void initData(ViewHolder viewHolder, int position) {
             viewHolder.item_text.setText(arrayItem.get(position).getLoremText());
             viewHolder.item_check.setChecked(arrayItem.get(position).getLoremCheck());
 
             viewHolder.item_text.setBackgroundColor(
-                    SimulateItems.getSimulateColor(ListViewActivity.this, arrayItem.get(position).getColorIndex())
+                    SimulateItems.getSimulateColor(context, arrayItem.get(position).getColorIndex())
             );
         }
 

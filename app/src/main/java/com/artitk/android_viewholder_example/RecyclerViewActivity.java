@@ -1,5 +1,6 @@
 package com.artitk.android_viewholder_example;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +21,14 @@ import java.util.ArrayList;
 
 public class RecyclerViewActivity extends AppCompatActivity {
 
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
+
+        context = this;
 
         initInstances();
     }
@@ -53,31 +58,31 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         @Override
         public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-            View convertView = LayoutInflater.from(RecyclerViewActivity.this).inflate(R.layout.view_item, null);
+            View convertView = LayoutInflater.from(context).inflate(R.layout.view_item, null);
             return new ViewHolder(convertView);
         }
 
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, int position) {
-            initInstances(position, viewHolder);
-            initData(position, viewHolder);
+            initInstances(viewHolder, position);
+            initData(viewHolder, position);
         }
 
-        private void initInstances(final int position, final ViewHolder viewHolder) {
+        private void initInstances(final ViewHolder viewHolder, final int position) {
             if (arrayInitPosition.contains(position)) return;
 
             viewHolder.item_text.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    (new AlertDialog.Builder(RecyclerViewActivity.this))
+                    (new AlertDialog.Builder(context))
                             .setTitle(R.string.choose_background_color)
-                            .setItems(SimulateItems.getSimulateColorNames(RecyclerViewActivity.this),
+                            .setItems(SimulateItems.getSimulateColorNames(context),
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             arrayItem.get(position).setColorIndex(which);
                                             viewHolder.item_text.setBackgroundColor(
-                                                    SimulateItems.getSimulateColor(RecyclerViewActivity.this, which)
+                                                    SimulateItems.getSimulateColor(context, which)
                                             );
                                         }
                                     })
@@ -97,12 +102,12 @@ public class RecyclerViewActivity extends AppCompatActivity {
             arrayInitPosition.add(position);
         }
 
-        private void initData(int position, ViewHolder viewHolder) {
+        private void initData(ViewHolder viewHolder, int position) {
             viewHolder.item_text.setText(arrayItem.get(position).getLoremText());
             viewHolder.item_check.setChecked(arrayItem.get(position).getLoremCheck());
 
             viewHolder.item_text.setBackgroundColor(
-                    SimulateItems.getSimulateColor(RecyclerViewActivity.this, arrayItem.get(position).getColorIndex())
+                    SimulateItems.getSimulateColor(context, arrayItem.get(position).getColorIndex())
             );
         }
 
