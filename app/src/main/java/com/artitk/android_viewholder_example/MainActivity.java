@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_recyclerview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Intent to new Activity
+                startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
             }
         });
     }
