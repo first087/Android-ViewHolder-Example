@@ -44,11 +44,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     private class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
         private ArrayList<LoremItem> arrayItem;
-        private ArrayList<Integer> arrayInitPosition;
 
         public RecyclerViewAdapter(ArrayList<LoremItem> arrayItem) {
             this.arrayItem = arrayItem;
-            arrayInitPosition = new ArrayList<>();
         }
 
         @Override
@@ -69,8 +67,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
         }
 
         private void initInstances(final ViewHolder viewHolder, final int position) {
-            if (arrayInitPosition.contains(position)) return;
-
             viewHolder.item_text.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -98,8 +94,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
                     arrayItem.get(position).setLoremCheck(isChecked);
                 }
             });
-
-            arrayInitPosition.add(position);
         }
 
         private void initData(ViewHolder viewHolder, int position) {
