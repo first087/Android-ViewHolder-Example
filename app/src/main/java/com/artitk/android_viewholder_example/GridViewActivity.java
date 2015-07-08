@@ -43,9 +43,15 @@ public class GridViewActivity extends AppCompatActivity {
 
     private class GridViewAdapter extends BaseAdapter {
         private ArrayList<LoremItem> arrayItem;
+        private int[] arrayColorIndex;
 
         public GridViewAdapter(ArrayList<LoremItem> arrayItem) {
             this.arrayItem = arrayItem;
+
+            arrayColorIndex = new int[arrayItem.size()];
+            for (int i=0; i<arrayColorIndex.length; i++) {
+                arrayColorIndex[i] = -1;
+            }
         }
 
         @Override
@@ -91,7 +97,8 @@ public class GridViewActivity extends AppCompatActivity {
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            arrayItem.get(position).setColorIndex(which);
+//                                            arrayItem.get(position).setColorIndex(which);
+                                            arrayColorIndex[position] = which;
                                             viewHolder.item_text.setBackgroundColor(
                                                     SimulateItems.getSimulateColor(context, which)
                                             );
@@ -116,7 +123,8 @@ public class GridViewActivity extends AppCompatActivity {
             viewHolder.item_check.setChecked(arrayItem.get(position).getLoremCheck());
 
             viewHolder.item_text.setBackgroundColor(
-                    SimulateItems.getSimulateColor(context, arrayItem.get(position).getColorIndex())
+//                    SimulateItems.getSimulateColor(context, arrayItem.get(position).getColorIndex())
+                    SimulateItems.getSimulateColor(context, arrayColorIndex[position])
             );
         }
 
