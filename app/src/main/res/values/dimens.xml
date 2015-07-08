@@ -6,4 +6,6 @@
     <dimen name="space_small">8dp</dimen>
     <dimen name="space_medium">16dp</dimen>
     <dimen name="space_large">32dp</dimen>
+
+    <dimen name="button_width">160dp</dimen>
 </resources>

@@ -20,13 +20,22 @@
             android:id="@+id/button_listview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:width="@dimen/button_width"
             android:text="@string/listview" />
 
         <Button
             android:id="@+id/button_recyclerview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:width="@dimen/button_width"
             android:text="@string/recyclerview" />
+
+        <Button
+            android:id="@+id/button_gridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="@dimen/button_width"
+            android:text="@string/gridview" />
 
     </LinearLayout>
 </RelativeLayout>
