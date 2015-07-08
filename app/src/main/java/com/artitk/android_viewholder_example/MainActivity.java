@@ -28,8 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button_recyclerview).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
+            }
+        });
+
+        findViewById(R.id.button_gridview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GridViewActivity.class));
             }
         });
     }

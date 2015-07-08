@@ -11,19 +11,34 @@ public class SimulateItems {
 
     public static ArrayList<LoremItem> getSimulateItems(Context context) {
         int[] loremResId = {
-                R.string.lorem_long_1, R.string.lorem_long_2, R.string.lorem_long_3,
-                R.string.lorem_long_4, R.string.lorem_long_5
+                R.string.lorem_long_1,
+                R.string.lorem_long_2,
+                R.string.lorem_long_3,
+                R.string.lorem_long_4,
+                R.string.lorem_long_5
         };
 
         ArrayList<LoremItem> arrayList = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             LoremItem loremItem = new LoremItem();
-            loremItem.setLoremText(context.getString(loremResId[i]));
+            loremItem.setLoremText(context.getString(loremResId[i % 5]));
+            loremItem.setLoremCheck(i == 1);
             arrayList.add(loremItem);
         }
 
-        arrayList.get(1).setLoremCheck(true);
+        return arrayList;
+    }
+
+    public static ArrayList<LoremItem> getSimulateItemsForGridView(Context context) {
+        ArrayList<LoremItem> arrayList = new ArrayList<>();
+
+        for (int i = 1; i <= 100; i++) {
+            LoremItem loremItem = new LoremItem();
+            loremItem.setLoremText(String.format(context.getString(R.string.gridview_item_x), i));
+            loremItem.setLoremCheck(i % 5 == 0);
+            arrayList.add(loremItem);
+        }
 
         return arrayList;
     }

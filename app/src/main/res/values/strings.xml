@@ -7,6 +7,7 @@
 
     <string name="listview">ListView</string>
     <string name="recyclerview">RecyclerView</string>
+    <string name="gridview">GridView</string>
 
     <string name="lorem_long_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum mattis tellus sed sodales. Nam nec mi tellus. Aliquam at finibus tortor. Donec hendrerit eu erat at malesuada. Nulla tincidunt ac nunc at blandit. Nullam vitae ultrices nisl, sit amet eleifend urna. Nam rutrum risus velit, eu condimentum ipsum consectetur sed. Maecenas blandit scelerisque leo et bibendum. Fusce porta justo ut mi luctus dictum. Sed in aliquam lectus, vitae dignissim sapien. Mauris eu ultrices tellus.</string>
     <string name="lorem_long_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis, metus ac pulvinar venenatis, justo ligula placerat ipsum, sit amet commodo augue mauris eu diam. Suspendisse posuere imperdiet nibh vel finibus. Fusce eget euismod tellus. Vestibulum condimentum massa a elit faucibus rhoncus. Aenean urna diam, dictum eu suscipit ut, sollicitudin et arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed congue est massa, quis tempor nunc finibus nec. Aenean laoreet laoreet velit in rhoncus. Integer vel nibh lectus. Nulla ut neque eu metus imperdiet fermentum. Phasellus commodo est at varius suscipit. Donec vitae justo non tellus ultrices vulputate. Maecenas consequat elit et fringilla molestie.</string>
@@ -22,4 +23,6 @@
     <string name="green">Green</string>
     <string name="blue">Blue</string>
     <string name="orange">Orange</string>
+
+    <string name="gridview_item_x">GridView item #%1$d</string>
 </resources>
