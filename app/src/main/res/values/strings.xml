@@ -23,4 +23,6 @@
     <string name="green">Green</string>
     <string name="blue">Blue</string>
     <string name="orange">Orange</string>
+
+    <string name="gridview_item_x">GridView item #%1$d</string>
 </resources>
