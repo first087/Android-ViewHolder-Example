@@ -55,7 +55,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         }
 
         @Override
-        public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
             View convertView = LayoutInflater.from(context).inflate(R.layout.view_item, null);
             return new ViewHolder(convertView);
         }
